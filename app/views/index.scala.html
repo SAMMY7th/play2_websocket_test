@@ -1,0 +1,14 @@
+@()(implicit request: RequestHeader)
+
+@main("WebSocketテスト") {
+<script type="text/javascript">
+    var ws = new WebSocket("@routes.Application.websocket.webSocketURL()");
+    ws.onmessage = function (evt) {
+    alert(evt.data);
+    }
+</script>
+<form class="form-inline">
+    <input type="text" id="name">
+    <input type="button" value="Send" onclick="ws.send($('#name').val())" class="btn" />
+</form>
+}
